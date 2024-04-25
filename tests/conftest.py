@@ -5,7 +5,7 @@ from selenium import webdriver
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():
-    browser.config.base_url = 'https://koshelek.ru'
+    browser.config.base_url = 'https://koshelek.ru/authorization/signup'
     browser.config.timeout = 10.0
     browser.config.window_width = 1800
     browser.config.window_height = 1080
