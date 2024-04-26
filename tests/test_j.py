@@ -16,7 +16,7 @@ def test_js():
     shadow_content = shadow_root.find_element(By.CSS_SELECTOR, 'input')
     print(f'\r\ntype host = {type(shadow_host)}')
     print(f'type root = {type(shadow_root)}')
-    print(f'type cont= {type(shadow_content)}')
+    print(f'type cont = {type(shadow_content)}')
 
 
     # work cod
