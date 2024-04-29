@@ -27,7 +27,7 @@ def test_bad_password(level, password):
     shadow_content_input_ref_kod = shadow_content_div_ref_kod.find_element(By.CSS_SELECTOR, "input").click()
 
 
-    shadow_content_text = shadow_content_div_password.find_element(By.XPATH, ".//span[contains(text(), 'Пароль')]")
+    shadow_content_text = shadow_content_div_password.find_element(By.XPATH, ".//span[@class='k-text']")
     # vv = shadow_content_form.find_elements(By.CSS_SELECTOR, "span")
     #   # print(f'\r\n\r\nTEXT = {shadow_content_text}')
     # for v in vv:

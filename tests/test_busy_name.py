@@ -22,7 +22,7 @@ def test_busy_name(name):
     shadow_content_input_email = shadow_content_div_email.find_element(By.CSS_SELECTOR, "input").click()
     time.sleep(1)
 
-    shadow_content_text = shadow_content_div_name.find_element(By.XPATH, ".//span[contains(text(), 'Имя пользователя уже занято')]")
+    shadow_content_text = shadow_content_div_name.find_element(By.XPATH, ".//span[@class='k-text']")
 
     assert shadow_content_text.text == 'Имя пользователя уже занято'
 

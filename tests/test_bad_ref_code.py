@@ -26,7 +26,7 @@ def test_bad_ref_code(code):
     shadow_content_input_ref_kod = shadow_content_div_ref_code.find_element(By.CSS_SELECTOR, "input").send_keys(f'{code}')
     shadow_content_input_password = shadow_content_div_password.find_element(By.CSS_SELECTOR, "input").click()
     # time.sleep(1)
-    shadow_content_text = shadow_content_div_ref_code.find_element(By.XPATH, ".//span[contains(text(), 'Неверный')]")
+    shadow_content_text = shadow_content_div_ref_code.find_element(By.XPATH, ".//span[@class='k-text']")
     # vv = shadow_content_form.find_elements(By.CSS_SELECTOR, "span")
     #   # print(f'\r\n\r\nTEXT = {shadow_content_text}')
     # for v in vv:

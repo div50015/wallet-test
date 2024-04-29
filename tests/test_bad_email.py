@@ -12,14 +12,18 @@ def test_bad_email(email):
 
     shadow_host = driver.find_element(By.CLASS_NAME, "remoteComponent")
     shadow_root = shadow_host.shadow_root
-    shadow_content = shadow_root.find_element(By.CSS_SELECTOR, 'form')
+    shadow_content_form = shadow_root.find_element(By.CSS_SELECTOR, 'form')
 
-    # shadow_content.find_element(By.XPATH, ".//*[text()='Имя пользователя']/../input").send_keys(f'aaaaaaaa')
-    shadow_content.find_element(By.XPATH, ".//*[text()='Электронная почта']/../input").send_keys(f'{email}')
+    shadow_content_div_name = shadow_content_form.find_element(By.XPATH, ".//div[@data-wi='user-name']")
+    shadow_content_div_email = shadow_content_form.find_element(By.XPATH, ".//div[@data-wi='identificator']")
+
+    # shadow_content_input_name = shadow_content_div_name.find_element(By.CSS_SELECTOR, "input").send_keys(f'aaaaaaaaa')
+    shadow_content_input_email = shadow_content_div_email.find_element(By.CSS_SELECTOR, "input").send_keys(f'{email}')
     time.sleep(1)
-    shadow_content.find_element(By.XPATH, ".//*[text()='Пароль']/../input").click()
 
-    shadow_content1 = shadow_content.find_element(By.XPATH, ".//span[contains(text(), 'Формат e-mail')]")
+    shadow_content = shadow_content_div_name.find_element(By.CSS_SELECTOR, "input").click()
+
+    shadow_content1 = shadow_content_div_email.find_element(By.XPATH, ".//span[@class='k-text']")
 
     assert shadow_content1.text == 'Формат e-mail: username@test.ru'
 
