@@ -5,10 +5,11 @@ import time
 
 
 # @pytest.mark.parametrize("level, password", [(1, 'a')])
-@pytest.mark.parametrize("level, password", [(1, 'a'), (2, 'aaaaaaaa')])
+@pytest.mark.parametrize("level, password",
+                         [(1, 'a'), (2, 'aaaaaaaa'), (2, 'aaaaaaaA'), (2, 'aaaaaaa1'), (2, 'aaaaaaa#'), (2, 'aaaaaaA1'),
+                          (2, 'aaaaaaA#'), (2, 'aaaaaa1#')])
 def test_bad_password(level, password):
     driver = webdriver.Chrome()
-    driver.set_window_size(1920,1080)
     driver.get("https://koshelek.ru/authorization/signup")
     time.sleep(7)
 
@@ -16,15 +17,11 @@ def test_bad_password(level, password):
     shadow_root = shadow_host.shadow_root
     shadow_content_form = shadow_root.find_element(By.CSS_SELECTOR, 'form')
 
-    # shadow_content_div_name = shadow_content_form.find_element(By.XPATH, ".//div[@data-wi='user-name']")
-    # shadow_content_div_email = shadow_content_form.find_element(By.XPATH, ".//div[@data-wi='identificator']")
     shadow_content_div_password = shadow_content_form.find_element(By.XPATH, ".//div[@data-wi='password']")
-    shadow_content_div_ref_kod = shadow_content_form.find_element(By.XPATH, ".//div[@data-wi='referral']")
-    # shadow_content_input_name = shadow_content_div_name.find_element(By.CSS_SELECTOR, "input").send_keys(f'aaaaaaaa')
-    # shadow_content_input_email = shadow_content_div_email.find_element(By.CSS_SELECTOR, "input").send_keys(f'aa@aaaa.aa')
-    # time.sleep(1)
+
     shadow_content_input_password = shadow_content_div_password.find_element(By.CSS_SELECTOR, "input").send_keys(f'{password}')
-    shadow_content_input_ref_kod = shadow_content_div_ref_kod.find_element(By.CSS_SELECTOR, "input").click()
+    shadow_content = shadow_content_form.click()
+    time.sleep(1)
 
 
     shadow_content_text = shadow_content_div_password.find_element(By.XPATH, ".//span[@class='k-text']")
