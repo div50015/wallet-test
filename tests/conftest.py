@@ -1,22 +1,28 @@
 import pytest
-from selene import browser
 from selenium import webdriver
-
+from selenium.webdriver.common.by import By
+import time
 
 @pytest.fixture(scope='function', autouse=True)
-def browser_management():
-    browser.config.base_url = 'https://koshelek.ru/authorization/signup'
-    browser.config.timeout = 10.0
-    browser.config.window_width = 1800
-    browser.config.window_height = 1080
+def driver_management():
+    driver = webdriver.Chrome()
+    driver.implicitly_wait(10)
+    driver.get("https://koshelek.ru/authorization/signup")
+    # time.sleep(5)
 
-#    browser.config.type_by_js = True
-    # закрытие сообщения о том что браузер запущен в отладочном режиме
-    driver_options = webdriver.ChromeOptions()
-    driver_options.add_experimental_option("excludeSwitches", ['enable-automation'])
-#    driver_options.add_argument('--headless=new')
-    browser.config.driver_options = driver_options
 
-    yield
+    yield driver
 
-    browser.quit()
+    driver.quit()
+
+# @pytest.fixture(scope='function', autouse=True)
+# def driver_config(request):
+#     driver = webdriver.Chrome()
+#     driver.implicitly_wait(10)
+#     driver.get("https://koshelek.ru/authorization/signup")
+#     # time.sleep(5)
+#     request.cls.driver = driver
+#
+#     yield driver
+#
+#     driver.quit()
