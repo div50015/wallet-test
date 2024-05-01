@@ -11,14 +11,18 @@ class RegistrationPage:
     SHADOW_DIV_EMAIL = (By.XPATH, ".//div[@data-wi='identificator']")
     SHADOW_DIV_PASSWORD = (By.XPATH, ".//div[@data-wi='password']")
     SHADOW_DIV_REF_CODE = (By.XPATH, ".//div[@data-wi='referral']")
+    SHADOW_DIV_CHECKBOX = (By.XPATH, ".//div[@data-wi='user-agreement']")
+    SHADOW_DIV_BUTTON = (By.XPATH, ".//div[@data-wi='submit-button']")
     SHADOW_INPUT_NAME = (By.CSS_SELECTOR, "input")
     SHADOW_INPUT_EMAIL = (By.CSS_SELECTOR, "input")
     SHADOW_INPUT_PASSWORD = (By.CSS_SELECTOR, "input")
     SHADOW_INPUT_REF_CODE = (By.CSS_SELECTOR, "input")
+    SHADOW_BUTTON = (By.CSS_SELECTOR, "button")
     SHADOW_SPAN_NAME = (By.XPATH, ".//span[@class='k-text']")
     SHADOW_SPAN_EMAIL = (By.XPATH, ".//span[@class='k-text']")
     SHADOW_SPAN_PASSWORD = (By.XPATH, ".//span[@class='k-text']")
     SHADOW_SPAN_REF_CODE = (By.XPATH, ".//span[@class='k-text']")
+    SHADOW_SPAN_CHECKBOX = (By.XPATH, ".//div")
 
     def __init__(self, driver):
         self.driver = driver
@@ -62,6 +66,12 @@ class RegistrationPage:
 
     def shadow_span_ref_code(self):
         return self.shadow_form().find_element(*self.SHADOW_DIV_REF_CODE).find_element(*self.SHADOW_SPAN_REF_CODE)
+
+    def shadow_span_checkbox(self):
+        return self.shadow_form().find_element(*self.SHADOW_DIV_CHECKBOX).find_element(*self.SHADOW_SPAN_CHECKBOX)
+
+    def shadow_next_button(self):
+        return self.shadow_form().find_element(*self.SHADOW_DIV_BUTTON).find_element(*self.SHADOW_BUTTON)
 
 
 
