@@ -17,7 +17,7 @@ def test_complete_todo():
     # browser.all('.v-btn.v-btn--router.v-btn--text.v-btn--tile.theme--light.v-size--default')[3].click()
     # browser.all('.v-text-field__slot')[1]
     # browser.all('input')[1].locate().shadow_root.find_element()
-    browser.element('.remoteComponent').c
+    browser.element('.remoteComponent').locate().shadow_root
 
     time.sleep(10)
     browser.close()
