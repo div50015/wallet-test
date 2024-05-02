@@ -11,7 +11,7 @@ def test_button_next(web_browser):
         app.shadow_next_button().click()
         time.sleep(1)
 
-    with (allure.step('Проверить значение ошибки полей Имя пользователя Электронная почта и Пароль')):
+    with (allure.step('Проверить значение ошибки полей Имя пользователя Электронная почта Пароль и Я согласен')):
         assert app.shadow_span_name().text == 'Поле не заполнено'
         assert app.shadow_span_email().text == 'Поле не заполнено'
         assert app.shadow_span_password().text == 'Поле не заполнено'
