@@ -1,7 +1,7 @@
 import pytest
-import time
 from pages.registration_page import RegistrationPage
 import allure
+
 
 @pytest.mark.parametrize("char",
                          [('ж'), ('Ж'), ('~'), ('@'), ('#'), ('$'), ('%'), ('^'), ('*'), ('('), (')'), ('-'),
@@ -12,9 +12,6 @@ def test_input_bad_char_name(char, web_browser):
 
     with allure.step('Ввести значение в поле Имя пользователя'):
         app.shadow_input_char_name(char)
-        # app.shadow_form().click()
-        time.sleep(1)
 
     with allure.step('Проверить значение ошибки поля Имя пользователя'):
         assert app.shadow_span_name().text == f'Введены недопустимые символы: {char}'
-
