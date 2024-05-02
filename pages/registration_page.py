@@ -29,7 +29,6 @@ class RegistrationPage:
 
     def shadow_form(self):
         return self.driver.find_element(*self.SHADOW_HOST_FIELD).shadow_root.find_element(*self.SHADOW_FORM_FILED)
-        # return self.driver.find_element(By.CLASS_NAME, "remoteComponent").shadow_root.find_element(By.CSS_SELECTOR, 'form')
 
     def find_element_css(self, webdriver, teg):
         return  webdriver.find_element(By.CSS_SELECTOR, teg)
