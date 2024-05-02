@@ -30,15 +30,15 @@ class RegistrationPage:
     def shadow_form(self):
         return self.driver.find_element(*self.SHADOW_HOST_FIELD).shadow_root.find_element(*self.SHADOW_FORM_FILED)
 
-    def find_element_css(self, webdriver, teg):
-        return  webdriver.find_element(By.CSS_SELECTOR, teg)
-
-    def find_element_xpath(self, webdriver, teg):
-        return  webdriver.find_element(By.XPATH, teg)
-
-    def shadow_div_name(self):
-        return self.shadow_form().find_element(*self.SHADOW_DIV_NAME)
-
+    # def find_element_css(self, webdriver, teg):
+    #     return  webdriver.find_element(By.CSS_SELECTOR, teg)
+    #
+    # def find_element_xpath(self, webdriver, teg):
+    #     return  webdriver.find_element(By.XPATH, teg)
+    #
+    # def shadow_div_name(self):
+    #     return self.shadow_form().find_element(*self.SHADOW_DIV_NAME)
+    #
     def shadow_input_name(self, name):
         return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_INPUT_NAME).send_keys(name)
 
