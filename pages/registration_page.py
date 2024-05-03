@@ -1,6 +1,5 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 
@@ -24,33 +23,37 @@ class RegistrationPage:
     SHADOW_SPAN_REF_CODE = (By.XPATH, ".//span[@class='k-text']")
     SHADOW_SPAN_CHECKBOX = (By.XPATH, ".//div")
     wait = WebDriverWait(webdriver, timeout=7)
-    expected_conditions
+
     def __init__(self, driver):
         self.driver = driver
 
     def shadow_form(self):
-        return self.wait.until(lambda driver: self.driver.find_element(*self.SHADOW_HOST_FIELD)).shadow_root.find_element(*self.SHADOW_FORM_FILED)
+        return self.wait.until(
+            lambda driver: self.driver.find_element(*self.SHADOW_HOST_FIELD)).shadow_root.find_element(
+            *self.SHADOW_FORM_FILED)
 
     def shadow_input_name(self, name):
-        return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_INPUT_NAME).send_keys(name)
+        return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_INPUT_NAME).send_keys(
+            name)
 
     def shadow_input_email(self, email):
-        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_EMAIL).find_element(*self.SHADOW_INPUT_EMAIL)).send_keys(email)
+        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_EMAIL).find_element(
+            *self.SHADOW_INPUT_EMAIL)).send_keys(email)
 
     def shadow_input_password(self, password):
-        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_PASSWORD).find_element(*self.SHADOW_INPUT_PASSWORD)).send_keys(password)
+        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_PASSWORD).find_element(
+            *self.SHADOW_INPUT_PASSWORD)).send_keys(password)
 
     def shadow_input_ref_code(self, code):
-        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_REF_CODE).find_element(*self.SHADOW_INPUT_REF_CODE)).send_keys(code)
+        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_REF_CODE).find_element(
+            *self.SHADOW_INPUT_REF_CODE)).send_keys(code)
 
     def shadow_input_char_name(self, char):
-        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_INPUT_NAME)).send_keys(f'Name{char}')
+        return self.wait.until(lambda driver: self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(
+            *self.SHADOW_INPUT_NAME)).send_keys(f'Name{char}')
 
     def shadow_span_name(self):
         return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_SPAN_NAME)
-        # element = self.shadow_form().find_element(*self.SHADOW_DIV_NAME)
-        # return WebDriverWait(element, timeout=7, poll_frequency=0.5).until(expected_conditions.visibility_of_element_located((self.SHADOW_SPAN_NAME)))
-
 
     def shadow_span_email(self):
         return self.shadow_form().find_element(*self.SHADOW_DIV_EMAIL).find_element(*self.SHADOW_SPAN_EMAIL)
@@ -66,7 +69,3 @@ class RegistrationPage:
 
     def shadow_next_button(self):
         return self.shadow_form().find_element(*self.SHADOW_DIV_BUTTON).find_element(*self.SHADOW_BUTTON)
-
-
-
-
