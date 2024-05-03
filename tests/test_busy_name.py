@@ -4,9 +4,7 @@ from pages.registration_page import RegistrationPage
 import allure
 
 
-@pytest.mark.parametrize("name", [('username'), ('username'), ('username'), ('username'), ('username'), ('username'),
-                                  ('username'), ('username'), ('username'), ('username'), ('username'), ('username'),
-                                  ('username')])
+@pytest.mark.parametrize("name", [('username'), ('username'), ('username')])
 def test_input_busy_name(name, web_browser):
     with allure.step('Открыть страницу регистрации'):
         app = RegistrationPage(web_browser)
