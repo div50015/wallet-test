@@ -48,6 +48,9 @@ class RegistrationPage:
 
     def shadow_span_name(self):
         return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_SPAN_NAME)
+        # element = self.shadow_form().find_element(*self.SHADOW_DIV_NAME)
+        # return WebDriverWait(element, timeout=7, poll_frequency=0.5).until(expected_conditions.visibility_of_element_located((self.SHADOW_SPAN_NAME)))
+
 
     def shadow_span_email(self):
         return self.shadow_form().find_element(*self.SHADOW_DIV_EMAIL).find_element(*self.SHADOW_SPAN_EMAIL)
