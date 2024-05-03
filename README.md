@@ -6,10 +6,10 @@
 ----
 Запуск тестов в cli: 
 ```bash
-pytest /test/
+pytest ./test/
 ```
 Получение отчетов: 
 ```bash
-allure serve /allure-results/
+allure serve ./allure-results/
 ```
 
