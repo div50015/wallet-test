@@ -8,7 +8,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 @pytest.fixture(scope='function', autouse=True)
 def web_browser():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-    driver.implicitly_wait(10)
+    # driver.implicitly_wait(10)
     driver.get("https://koshelek.ru/authorization/signup")
 
     yield driver

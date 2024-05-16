@@ -1,6 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class RegistrationPage:
@@ -53,6 +54,12 @@ class RegistrationPage:
             *self.SHADOW_INPUT_NAME)).send_keys(f'Name{char}')
 
     def shadow_span_name(self):
+        elem = self.shadow_form().find_element(*self.SHADOW_DIV_NAME)
+        return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_SPAN_NAME)
+
+    def shadow_span_busy_name(self):
+        elem = self.shadow_form().find_element(*self.SHADOW_DIV_NAME)
+        WebDriverWait(elem, timeout=7, poll_frequency=0.1).until(EC.text_to_be_present_in_element((By.XPATH, ".//span[@class='k-text']"), "уже"))
         return self.shadow_form().find_element(*self.SHADOW_DIV_NAME).find_element(*self.SHADOW_SPAN_NAME)
 
     def shadow_span_email(self):
